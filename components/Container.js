@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, Text } from "@chakra-ui/core";
 import styled from "@emotion/styled";
-import Link from "next/Link";
+import Link from "next/link";
 
 const StickyNav = styled(Flex)`
   position: sticky;
