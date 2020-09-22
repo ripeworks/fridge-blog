@@ -5,6 +5,7 @@ import { Stack, Flex, Heading, Text } from "@chakra-ui/core";
 import dateformat from "dateformat";
 import BlockContent from "../../components/BlockContent";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function Post({ post }) {
   const router = useRouter();
@@ -15,6 +16,11 @@ export default function Post({ post }) {
 
   return (
     <Container>
+      <Head>
+        <title>
+          {post.title} - {process.env.NEXT_PUBLIC_TITLE || "Blog"}
+        </title>
+      </Head>
       <Stack
         as="article"
         spacing={8}

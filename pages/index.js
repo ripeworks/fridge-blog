@@ -1,5 +1,6 @@
 import { fridge } from "fridge-next";
 import NextLink from "next/link";
+import Head from "next/head";
 import { Stack, Box, Flex, Link, Heading, Text } from "@chakra-ui/core";
 import dateformat from "dateformat";
 import Container from "../components/Container";
@@ -7,6 +8,9 @@ import Container from "../components/Container";
 const Index = ({ posts }) => {
   return (
     <Container>
+      <Head>
+        <title>{process.env.NEXT_PUBLIC_TITLE || "Blog"}</title>
+      </Head>
       <Stack
         as="main"
         spacing={8}
