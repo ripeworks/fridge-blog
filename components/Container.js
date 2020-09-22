@@ -28,7 +28,7 @@ const Container = ({ children }) => {
       >
         <Link href="/">
           <a>
-            <Text>Blog Title</Text>
+            <Text>{process.env.NEXT_PUBLIC_TITLE || "Blog"}</Text>
           </a>
         </Link>
       </StickyNav>
