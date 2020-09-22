@@ -4,8 +4,15 @@ import Container from "../../components/Container";
 import { Stack, Flex, Heading, Text } from "@chakra-ui/core";
 import dateformat from "dateformat";
 import BlockContent from "../../components/BlockContent";
+import { useRouter } from "next/router";
 
 export default function Post({ post }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading</div>;
+  }
+
   return (
     <Container>
       <Stack
