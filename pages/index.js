@@ -4,8 +4,13 @@ import Head from "next/head";
 import { Stack, Box, Flex, Link, Heading, Text } from "@chakra-ui/core";
 import dateformat from "dateformat";
 import Container from "../components/Container";
+import Login from "../components/Login";
 
-const Index = ({ posts }) => {
+const Index = ({ hasAccess, posts }) => {
+  if (hasAccess === false) {
+    return <Login />;
+  }
+
   return (
     <Container>
       <Head>

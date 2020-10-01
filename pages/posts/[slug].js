@@ -6,9 +6,14 @@ import dateformat from "dateformat";
 import BlockContent from "../../components/BlockContent";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Login from "../components/Login";
 
-export default function Post({ post }) {
+export default function Post({ hasAccess, post }) {
   const router = useRouter();
+
+  if (hasAccess === false) {
+    return <Login />;
+  }
 
   if (router.isFallback) {
     return (

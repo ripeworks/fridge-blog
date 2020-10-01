@@ -13,6 +13,7 @@
     "fridge-next": "^8.0.0",
     "next": "^9.5.3",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "universal-cookie": "^4.0.4"
   }
 }

@@ -1,10 +1,12 @@
 import React from "react";
 import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 import { Global, css } from "@emotion/core";
+import App from "next/app";
 import Head from "next/head";
 import theme from "../theme";
+import Cookies from "universal-cookie";
 
-export default function App({ Component, pageProps }) {
+function BlogApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <CSSReset />
@@ -27,3 +29,16 @@ export default function App({ Component, pageProps }) {
     </ThemeProvider>
   );
 }
+
+if (process.env.PASSWORD) {
+  BlogApp.getInitialProps = async (appContext) => {
+    const appProps = await App.getInitialProps(appContext);
+    const cookies = new Cookies(appContext.ctx.req.headers.cookie);
+    const password = cookies.get("fridge_blog_password") ?? "";
+
+    appProps.pageProps.hasAccess = password === process.env.PASSWORD;
+
+    return appProps;
+  };
+}
+export default BlogApp;
