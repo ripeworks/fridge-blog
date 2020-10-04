@@ -30,7 +30,7 @@ export default function PhotoGallery({ photos }) {
           onClick={() => gotoPhoto(index)}
           _hover={{ textDecoration: "none" }}
         >
-          <Image src={`${photo.url}?w=400`} />
+          <Image src={`${photo.url}?w=500`} />
         </Link>
       ))}
       <Modal
