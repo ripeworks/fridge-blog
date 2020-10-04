@@ -4,13 +4,9 @@ import Head from "next/head";
 import { Stack, Box, Flex, Link, Heading, Text } from "@chakra-ui/core";
 import dateformat from "dateformat";
 import Container from "../components/Container";
-import Login from "../components/Login";
+import withAuth from "../components/withAuth";
 
-const Index = ({ hasAccess, posts }) => {
-  if (hasAccess === false) {
-    return <Login />;
-  }
-
+const Index = ({ posts }) => {
   return (
     <Container>
       <Head>
@@ -43,7 +39,7 @@ const Index = ({ hasAccess, posts }) => {
                     textAlign={["left", "right"]}
                     mb={[4, 0]}
                   >
-                    {dateformat(post.createdat, "longDate")}
+                    {dateformat(post.date_created, "longDate")}
                   </Text>
                 </Flex>
               </Box>
@@ -55,7 +51,7 @@ const Index = ({ hasAccess, posts }) => {
   );
 };
 
-export default Index;
+export default withAuth(Index);
 
 export async function getStaticProps() {
   const posts = await fridge("content/blog_post");

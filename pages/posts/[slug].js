@@ -6,14 +6,10 @@ import dateformat from "dateformat";
 import BlockContent from "../../components/BlockContent";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Login from "../../components/Login";
+import withAuth from "../../components/withAuth";
 
-export default function Post({ hasAccess, post }) {
+function Post({ post }) {
   const router = useRouter();
-
-  if (hasAccess === false) {
-    return <Login />;
-  }
 
   if (router.isFallback) {
     return (
@@ -61,7 +57,7 @@ export default function Post({ hasAccess, post }) {
           >
             <Flex align="center">
               <Text fontSize="sm">
-                {dateformat(post.createdAt, "longDate")}
+                {dateformat(post.date_created, "longDate")}
               </Text>
             </Flex>
           </Flex>
@@ -71,6 +67,8 @@ export default function Post({ hasAccess, post }) {
     </Container>
   );
 }
+
+export default withAuth(Post);
 
 export async function getStaticProps({ params }) {
   const post = await fridge(`content/blog_post/${params.slug}`);

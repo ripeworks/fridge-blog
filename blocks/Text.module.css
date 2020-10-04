@@ -1,0 +1,13 @@
+.text p {
+  margin: 1em 0;
+}
+
+.text ul {
+  list-style-type: disc;
+  padding-inline-start: 1.5em;
+  margin: 1em 0;
+}
+
+.text li {
+  margin: 4px 0;
+}
